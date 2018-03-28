@@ -58,3 +58,25 @@ function kebabize2(str) {
     }
     return str;
 }
+
+// cleaned up the conditional and removed object so now it's checking if character is 
+// uppercase also considering input in all languages.
+
+function kebabize(str) {
+    for(var i=0; i<str.length; i++){
+        if(!isNaN(parseInt(str.charAt(i)))){
+          str = str.substring(0,i)+str.substring(i+1);
+          i--;
+        }else{
+          if(str.charAt(i) == str.charAt(i).toLocaleUpperCase()){
+            var toLower = str.charAt(i).toLocaleLowerCase()
+            if(i !== 0){
+              str = str.substring(0,i)+"-"+toLower+str.substring(i+1);
+            }else{
+              str = str.substring(0,i)+toLower+str.substring(i+1);
+            }
+          }
+        }
+    }
+    return str;
+  }
